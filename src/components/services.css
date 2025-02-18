@@ -1,0 +1,116 @@
+.App {
+    font-family: sans-serif;
+    margin: 100px 200px;
+    text-align: center;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 364px;
+    height: 364px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    transition: 0.5s;
+    transform-origin: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transform: rotate(0deg);
+  }
+  
+  .carousel::before {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #000;
+    border-radius: 50% 0 0 50%;
+  }
+  
+  .item-carousel {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin: 2px;
+    bottom: 0;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+  
+    /* Rotation for different positions */
+    transform: rotate(0deg) translateX(150px);
+  }
+  
+  .item-carousel.next {
+    background: blue;
+    color: white;
+  }
+  
+  .item-carousel.prev {
+    background: green;
+    color: white;
+  }
+  
+  .item-carousel.active {
+    background: #000;
+    color: white;
+  }
+  
+  /* Positions for the 10 items */
+  .item-carousel:nth-child(1) {
+    transform: rotate(0deg) translateX(150px);
+  }
+  .item-carousel:nth-child(2) {
+    transform: rotate(36deg) translateX(150px);
+  }
+  .item-carousel:nth-child(3) {
+    transform: rotate(72deg) translateX(150px);
+  }
+  .item-carousel:nth-child(4) {
+    transform: rotate(108deg) translateX(150px);
+  }
+  .item-carousel:nth-child(5) {
+    transform: rotate(144deg) translateX(150px);
+  }
+  .item-carousel:nth-child(6) {
+    transform: rotate(180deg) translateX(150px);
+  }
+  .item-carousel:nth-child(7) {
+    transform: rotate(216deg) translateX(150px);
+  }
+  .item-carousel:nth-child(8) {
+    transform: rotate(252deg) translateX(150px);
+  }
+  .item-carousel:nth-child(9) {
+    transform: rotate(288deg) translateX(150px);
+  }
+  .item-carousel:nth-child(10) {
+    transform: rotate(324deg) translateX(150px);
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #444;
+    }
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
