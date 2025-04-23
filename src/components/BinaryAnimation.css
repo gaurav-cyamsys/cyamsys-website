@@ -1,0 +1,7 @@
+.binary-line {
+    white-space: nowrap;
+  }
+  
+  .binary-line span {
+    display: inline-block;
+  }
