@@ -42,6 +42,18 @@ export default function Services() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    // Generate particles only on the client side
+    const newParticles = [...Array(20)].map((_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight
+    }));
+    setParticles(newParticles);
+  }, []);
+
   return (
     <section ref={containerRef} className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -173,13 +185,13 @@ export default function Services() {
 
         {/* Floating Particles Animation */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+          {particles.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               className="absolute w-2 h-2 bg-white rounded-full"
               initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: particle.x,
+                y: particle.y,
                 opacity: 0
               }}
               animate={{ 

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -6,13 +8,33 @@ import Image from 'next/image';
 function Quote() {
   const quote = "TO SCALE HIGH IN ELECTRONICS INDUSTRY WITH QUALITY, PRECISION AND FUTURE DEVELOPMENT";
   const [isVisible, setIsVisible] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
+
+    // Set initial dimensions
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+
+    // Update dimensions on resize
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
     
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
   
   return (
@@ -42,18 +64,18 @@ function Quote() {
       
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(20)].map((_, i) => (
+        {dimensions.width > 0 && [...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * dimensions.width, 
+              y: Math.random() * dimensions.height,
               scale: 0,
               opacity: 0
             }}
             animate={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * dimensions.width, 
+              y: Math.random() * dimensions.height,
               scale: Math.random() * 0.5 + 0.5,
               opacity: Math.random() * 0.3 + 0.1
             }}
