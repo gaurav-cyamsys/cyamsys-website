@@ -15,48 +15,50 @@ export function FeaturesSectionDemo({featureRef}) {
   return (
     <motion.div 
       ref={featureRef} 
-      className="relative sm:px-5 px-0 mb-32 min-h-screen flex flex-col justify-start items-center snap-mandatory snap-start pt-10"
+      className="relative w-full min-h-screen flex flex-col justify-start items-center snap-mandatory snap-start pt-16 sm:pt-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="sm:block relative z-10 mt-8"> 
+      {/* Decorative Images */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div 
-          className="absolute sm:h-[200px] sm:w-[200px] left-2 top-[17rem] sm:block z-10"
+          className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 left-4 sm:left-8 top-[20%] sm:top-[25%]"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 0.7 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/Innovation.png"/>
+          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/Innovation.png" alt="Innovation"/>
         </motion.div>
         <motion.div 
-          className="absolute sm:h-[200px] sm:w-[200px] left-2 top-[55%] sm:block z-10"
+          className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 left-4 sm:left-8 top-[60%] sm:top-[65%]"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 0.7 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/electronics.png"/>
+          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/electronics.png" alt="Electronics"/>
         </motion.div>
         <motion.div 
-          className="absolute sm:h-[200px] sm:w-[200px] right-2 top-[17rem] sm:block z-10"
+          className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 right-4 sm:right-8 top-[20%] sm:top-[25%]"
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 0.7 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/research.png"/>
+          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/research.png" alt="Research"/>
         </motion.div>
         <motion.div 
-          className="absolute sm:h-[200px] sm:w-[200px] right-2 top-[55%] sm:block z-10"
+          className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 right-4 sm:right-8 top-[60%] sm:top-[65%]"
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 0.7 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/iot.png"/>
+          <img className="w-full h-full object-cover filter blur-[2px] opacity-70 hover:opacity-90 transition-opacity duration-300" src="/iot.png" alt="IoT"/>
         </motion.div>
       </div>
       
+      {/* Title */}
       <motion.h2 
-        className="sm:text-5xl text-3xl font-bold text-center text-white mb-4 relative z-20 -mt-8"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-8 sm:mb-12 relative z-20"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
@@ -64,8 +66,9 @@ export function FeaturesSectionDemo({featureRef}) {
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">Features</span>
       </motion.h2>    
       
+      {/* Carousel */}
       <motion.div 
-        className="w-full flex flex-col justify-center relative z-20 mt-10"
+        className="w-full max-w-7xl mx-auto flex flex-col justify-center relative z-20 px-4 sm:px-6 lg:px-8"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
@@ -77,7 +80,6 @@ export function FeaturesSectionDemo({featureRef}) {
 }
 
 const features = [
- 
   {
     title: "Innovation Driven R&D",
     description: "Built for engineers, developers, dreamers, thinkers and doers.",
@@ -122,14 +124,14 @@ const features = [
 
 export const Grid = ({ pattern, size }) => {
   const p = pattern ?? Array.from({ length: 5 }, () => [7, 8]);
-  const adjustedSize = size ?? 20; // Use a variable for size
+  const adjustedSize = size ?? 20;
 
   return (
-      <div className="pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(white,transparent)]"> {/* Use inset-0 */}
-          <div className="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] from-zinc-900/30 to-zinc-900/30 opacity-100">
-              <GridPattern width={adjustedSize} height={adjustedSize} x="0" y="0" squares={p} className="absolute inset-0 h-full w-full mix-blend-overlay fill-white/10 stroke-white/10" /> {/* x and y are 0 */}
-          </div>
+    <div className="pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(white,transparent)]">
+      <div className="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] from-zinc-900/30 to-zinc-900/30 opacity-100">
+        <GridPattern width={adjustedSize} height={adjustedSize} x="0" y="0" squares={p} className="absolute inset-0 h-full w-full mix-blend-overlay fill-white/10 stroke-white/10" />
       </div>
+    </div>
   );
 };
 
@@ -144,9 +146,9 @@ export function GridPattern({ width, height, x, y, squares, ...props }) {
           </defs>
           <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${patternId})`} />
           {squares && (
-              <svg key={`${x}-${y}`} x={x} y={y} className="overflow-visible"> {/* Key added here */}
-                  {squares.map(([sx, sy], index) => ( // index added here
-                      <rect key={index} width={width + 1} height={height + 1} x={sx * width} y={sy * height} strokeWidth="0" /> // Key added here
+              <svg key={`${x}-${y}`} x={x} y={y} className="overflow-visible">
+                  {squares.map(([sx, sy], index) => (
+                      <rect key={index} width={width + 1} height={height + 1} x={sx * width} y={sy * height} strokeWidth="0" />
                   ))}
               </svg>
           )}

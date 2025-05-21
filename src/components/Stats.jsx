@@ -76,8 +76,8 @@ function Stats() {
             <Testimonial />
             
                     <div className=" max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto rounded-full "> {/* Border applied here */}
-                            <dl className="rounded-full shadow-lg sm:grid sm:grid-cols-3 border-4 !border-yellow-400"> {/* Border applied here */}
+                        <div className="max-w-4xl mx-auto"> {/* Border applied here */}
+                            <dl className="shadow-lg sm:grid sm:grid-cols-3"> {/* Border applied here */}
                                 {/* Since Section */}
                                 <div className="flex flex-col p-6 text-center border-b-4 border-gray-700 sm:border-0 sm:border-r-4">
                                     <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-400">

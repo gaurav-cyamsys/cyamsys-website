@@ -25,7 +25,6 @@ const EmblaCarousel = (props) => {
     const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()))
     setScrollProgress(progress * 100)
     
-    // Update active index based on scroll position
     const index = emblaApi.selectedScrollSnap()
     setActiveIndex(index)
   }, [])
@@ -40,19 +39,6 @@ const EmblaCarousel = (props) => {
       .on('select', onScroll)
   }, [emblaApi, onScroll])
 
-  // Add direct click handlers to ensure they work
-  const handlePrevClick = useCallback(() => {
-    if (emblaApi) {
-      emblaApi.scrollPrev()
-    }
-  }, [emblaApi])
-
-  const handleNextClick = useCallback(() => {
-    if (emblaApi) {
-      emblaApi.scrollNext()
-    }
-  }, [emblaApi])
-
   return (
     <div className="embla theme-dark">
       <div className="embla__viewport theme-dark" ref={emblaRef}>
@@ -61,53 +47,42 @@ const EmblaCarousel = (props) => {
             <div className="embla__slide theme-dark" key={index}>
               <div className="embla__slide__number theme-dark">
                 <Grid size={20} />
-                <div className='flex flex-col md:flex md:flex-row md:justify-between p-4'>
-                  <div className="flex items-center mb-4 md:mb-0">
-                    <motion.span 
-                      className="text-4xl mr-3"
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ 
-                        scale: activeIndex === index ? 1.2 : 1, 
-                        opacity: 1 
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {item.icon}
-                    </motion.span>
-                    <motion.p 
-                      className="text-base mx-1 font-bold text-white relative z-20 text-xl"
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.1, duration: 0.5 }}
-                    >
+                <div className="flex flex-col md:flex-row md:justify-between gap-4 md:gap-6 p-4 sm:p-6 md:p-8">
+                  <div className="flex-1">
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-white relative z-20 mb-2 sm:mb-3">
                       {item.title}
-                    </motion.p>
+                    </p>
+                    <p className="text-sm sm:text-base text-neutral-400 relative z-20">
+                      {item.description}
+                    </p>
                   </div>
-                  <motion.p 
-                    className="text-neutral-300 sm:mt-0 mt-5 sm:mx-2 mx-0 text-base font-normal relative z-20"
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                  >
-                    {item.description}
-                  </motion.p>
+                  {item.icon && (
+                    <div className="flex items-center justify-center md:justify-end">
+                      <span className="text-3xl sm:text-4xl md:text-5xl">{item.icon}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="embla__controls theme-dark">
-        <div className="embla__buttons theme-dark">
-          <PrevButton onClick={handlePrevClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={handleNextClick} disabled={nextBtnDisabled} />
-        </div>
-
-        <div className="embla__progress theme-dark">
+      
+      {/* Navigation Buttons */}
+      <div className="embla__buttons mt-4 sm:mt-6 flex justify-center gap-4">
+        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      </div>
+      
+      {/* Progress Bar */}
+      <div className="embla__progress mt-4 sm:mt-6">
+        <div 
+          className="embla__progress__bar h-1 sm:h-1.5 bg-neutral-800 rounded-full overflow-hidden"
+          style={{ width: '100%' }}
+        >
           <div
-            className="embla__progress__bar theme-dark"
-            style={{ transform: `translate3d(${scrollProgress}%,0px,0px)` }}
+            className="embla__progress__bar__fill h-full bg-yellow-400 transition-transform duration-300"
+            style={{ transform: `translateX(${scrollProgress}%)` }}
           />
         </div>
       </div>

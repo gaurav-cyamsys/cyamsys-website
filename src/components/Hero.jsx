@@ -5,11 +5,9 @@ import { cn } from "@/lib/utils";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 import Carousel from "./ui/carousel";
 
-
-
 const AuroraBackgroundDemo = ({ featureRef }) => {
   return (
-    <div className="relative h-[100vh] overflow-hidden snap-mandatory snap-y snap-center">
+    <div className="relative min-h-screen w-full overflow-hidden snap-mandatory snap-y snap-center">
       {/* Background Image with z-index -1 to place it behind everything */}
       <div
         className="absolute inset-0 z-10"
@@ -17,15 +15,12 @@ const AuroraBackgroundDemo = ({ featureRef }) => {
           backgroundImage: 'url(/bg.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
-          opacity: 0.7,  // Apply opacity only to the background image
+          opacity: 0.7,
         }}
       />
 
       {/* Content Section */}
-      <div style={{ckgroundImage: 'url(/bg.png)'}} className=" inset-0 w-full h-full relative flex flex-col z-20 overflow-hidden items-center justify-center transition-bg">
-        {/* Matrix Rain Effect */}
-        {/* <MatrixRain /> */}
-
+      <div className="inset-0 w-full h-full relative flex flex-col z-20 overflow-hidden items-center justify-center transition-bg pt-4 sm:pt-8 min-h-screen -translate-y-12 sm:-translate-y-16">
         {/* Content Section */}
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
@@ -35,15 +30,15 @@ const AuroraBackgroundDemo = ({ featureRef }) => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4 z-30"
+          className="relative flex flex-col gap-4 items-center justify-center px-4 sm:px-6 md:px-8 z-30 w-full"
         >
           <img
-            className="absolute  -top-32 h-32 left-1/2 transform -translate-x-1/2 z-40"
+            className="relative mb-2 sm:mb-4 h-16 sm:h-24 mx-auto z-40"
             src="/logo.png"
             alt="Logo"
           />
 
-          <div className="text-2xl leading-snug md:leading-snug sm:w-1/2 w-[60%] mx-auto mt-3 md:text-5xl font-bold text-gray-300 dark:text-gray-100 text-center z-40">
+          <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-tight sm:leading-snug md:leading-snug w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto mt-3 font-bold text-gray-300 dark:text-gray-100 text-center z-40">
             Empowering the Future with{" "}
             <span className="bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">
               Smart IoT
@@ -57,7 +52,7 @@ const AuroraBackgroundDemo = ({ featureRef }) => {
         </motion.div>
 
         {/* Scroll Down Arrow */}
-        <div className="absolute cursor-pointer bottom-8 left-1/2 -translate-x-1/2 z-40">
+        <div className="absolute cursor-pointer bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-40">
           <svg
             onClick={() => featureRef.current?.scrollIntoView({ behavior: "smooth" })}
             xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +64,7 @@ const AuroraBackgroundDemo = ({ featureRef }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="w-6 h-6 sm:w-8 sm:h-8"
           >
             <path d="M19 9l-7 7-7-7" />
           </svg>
@@ -79,11 +75,6 @@ const AuroraBackgroundDemo = ({ featureRef }) => {
 };
 
 export default AuroraBackgroundDemo;
-
-
-
-
-
 
 const MatrixRain = () => {
   const canvasRef = useRef(null);

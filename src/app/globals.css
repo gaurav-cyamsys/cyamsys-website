@@ -2,77 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.binary-line {
-  position: absolute;
-  white-space: nowrap;
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  text-shadow: 0 0 10px #91EDFF;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  overflow: hidden;
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
-.binary-line span {
-  display: inline-block; /* Important for opacity */
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-
+/* Embla Carousel Styles */
 .embla {
-  max-width: 80%;
+  width: 100%;
   margin: auto;
-  --slide-height: 19rem;
+  --slide-height: 16rem;
   --slide-spacing: 1rem;
-  --slide-size: 65%;
+  --slide-size: 100%;
 }
+
+@media (min-width: 640px) {
+  .embla {
+    --slide-height: 19rem;
+    --slide-spacing: 1.5rem;
+    --slide-size: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla {
+    --slide-size: 65%;
+  }
+}
+
 .embla__viewport {
   overflow: hidden;
 }
+
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
 }
+
 .embla__slide {
-  transform: translate3d(0, 0, 0);
   flex: 0 0 var(--slide-size);
   min-width: 0;
   padding-left: var(--slide-spacing);
   position: relative;
-  z-index: 5;
 }
+
 .embla__slide__number {
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   border-radius: 1.8rem;
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   height: var(--slide-height);
   user-select: none;
-  padding: 18px;
   background-color: rgba(20, 20, 20, 0.7);
   backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.embla__controls {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  justify-content: space-between;
-  gap: 1.2rem;
-  margin-top: 1.8rem;
-}
+
+/* Navigation Buttons */
 .embla__buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
+
 .embla__button {
   -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
   -webkit-appearance: none;
@@ -85,51 +86,53 @@
   border: 0;
   padding: 0;
   margin: 0;
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
   z-index: 1;
   border-radius: 50%;
   color: var(--text-body);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
+
+.embla__button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 640px) {
+  .embla__button {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}
+
 .embla__button:disabled {
-  color: var(--detail-high-contrast);
+  opacity: 0.3;
+  cursor: not-allowed;
 }
-.embla__button__svg {
-  width: 35%;
-  height: 35%;
-}
+
+/* Progress Bar */
 .embla__progress {
-  border-radius: 1.8rem;
-  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  background-color: var(--background-site);
-  position: relative;
-  height: 0.6rem;
-  justify-self: flex-end;
-  align-self: center;
-  width: 9rem;
-  max-width: 90%;
+  margin-top: 1.5rem;
+}
+
+.embla__progress__bar {
+  height: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
   overflow: hidden;
 }
-.embla__progress__bar {
+
+.embla__progress__bar__fill {
+  height: 100%;
   background-color: var(--text-body);
-  position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  left: -100%;
-}
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+  transition: transform 0.3s ease;
 }
 
+/* Theme Variables */
 .theme-dark {
   --brand-primary: rgb(148, 190, 255);
   --brand-secondary: rgb(203, 178, 236);
@@ -165,26 +168,28 @@
   --admonition-danger-rgb-value: 230, 50, 50;
 }
 
-
-::-webkit-scrollbar {
-  width: 8px; /* Adjust thickness */
+/* Hide scrollbar on mobile */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #1f2937; /* Gray-800 */
-  border-radius: 10px;
-  margin-block: 20px; /* Trims the scrollbar from top and bottom */
-}
+/* Show scrollbar on larger devices */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #6b7280; /* Gray-500 */
-  border-radius: 10px;
-}
+  ::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 10px;
+  }
 
-
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
+  ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 10px;
+  }
 }
 
 @layer base {

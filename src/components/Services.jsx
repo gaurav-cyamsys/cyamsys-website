@@ -55,17 +55,17 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={containerRef} className="min-h-screen w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section ref={containerRef} className="min-h-screen w-full py-10 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       {/* Animated Background Elements */}
       <motion.div 
         style={{ y, opacity }}
         className="absolute inset-0 pointer-events-none"
       >
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/4 left-1/4 w-32 sm:w-64 h-32 sm:h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-32 sm:w-64 h-32 sm:h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
       </motion.div>
 
-      <div className="max-w-5xl mx-auto relative px-24 md:px-32">
+      <div className="max-w-5xl mx-auto relative px-4 sm:px-8 md:px-16 lg:px-24">
         {/* Header Section with Animation */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -75,10 +75,10 @@ export default function Services() {
             type: "spring",
             bounce: 0.4
           }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
           <motion.h2 
-            className="text-4xl sm:text-5xl font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -86,7 +86,7 @@ export default function Services() {
             Our Services
           </motion.h2>
           <motion.p 
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
+            className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
@@ -96,7 +96,7 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid with Enhanced Animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -117,7 +117,7 @@ export default function Services() {
               className="relative group"
             >
               <motion.div 
-                className="relative overflow-hidden rounded-2xl bg-gray-800/50 p-8 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
+                className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-800/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
                 whileHover={{ 
                   boxShadow: "0 0 30px rgba(255,255,255,0.1)"
                 }}
@@ -135,13 +135,13 @@ export default function Services() {
                 {/* Content with Animation */}
                 <div className="relative z-10">
                   <motion.div 
-                    className="flex items-start gap-6"
+                    className="flex items-start gap-4 sm:gap-6"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.3, duration: 0.5 }}
                   >
                     <motion.div 
-                      className="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-900/50 p-3"
+                      className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl overflow-hidden bg-gray-900/50 p-2 sm:p-3"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
@@ -150,18 +150,19 @@ export default function Services() {
                         alt={service.title}
                         width={40}
                         height={40}
-                        className="object-contain"
+                        className="object-contain w-full h-full"
                       />
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.4, duration: 0.5 }}
+                      className="flex-1"
                     >
-                      <h3 className="text-xl font-semibold text-white mb-2">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-gray-400">
+                      <p className="text-sm sm:text-base text-gray-400">
                         {service.description}
                       </p>
                     </motion.div>
@@ -188,7 +189,7 @@ export default function Services() {
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute w-2 h-2 bg-white rounded-full"
+              className="absolute w-1 sm:w-2 h-1 sm:h-2 bg-white rounded-full"
               initial={{ 
                 x: particle.x,
                 y: particle.y,
@@ -199,9 +200,8 @@ export default function Services() {
                 opacity: [0, 1, 0],
               }}
               transition={{
-                duration: Math.random() * 3 + 2,
+                duration: Math.random() * 2 + 1,
                 repeat: Infinity,
-                repeatType: "loop",
                 ease: "linear"
               }}
             />

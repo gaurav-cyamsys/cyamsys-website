@@ -156,10 +156,7 @@ export default function Products({ onExit }) {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: imagesLoaded ? 1 : 0, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className={`w-full min-h-screen p-4 md:p-6 justify-center items-center text-slate-900 shadow-lg snap-center flex flex-col relative overflow-hidden`}
-            style={{ 
-              background: `linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%)`
-            }}
+            className={`w-full min-h-screen p-4 md:p-6 justify-center items-center text-white shadow-lg snap-center flex flex-col relative overflow-hidden bg-black`}
           >
             {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden z-0">
@@ -182,15 +179,15 @@ export default function Products({ onExit }) {
 
             {/* Mobile Layout: PRODUCT LABEL -> TEXT CONTENT -> IMAGE */}
             <div className="mt-6 flex flex-col items-center md:hidden relative z-10 w-full">
-              <div className="text-center px-4 bg-white/90 backdrop-blur-sm p-5 rounded-2xl shadow-xl w-full max-w-md border border-gray-100 max-h-[50vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+              <div className="text-center px-4 bg-black/90 backdrop-blur-sm p-5 rounded-2xl shadow-xl w-full max-w-md border border-gray-700 max-h-[50vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                 <motion.div 
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex items-center justify-center mb-4 sticky top-0 bg-white/90 backdrop-blur-sm py-2 z-10"
+                  className="flex items-center justify-center mb-4 sticky top-0 bg-black/60 backdrop-blur-sm py-2 z-10"
                 >
                   <span className="text-4xl mr-3">{slide.icon}</span>
-                  <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">{slide.name}</h2>
+                  <h2 className="text-2xl font-bold text-white">{slide.name}</h2>
                 </motion.div>
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
@@ -207,7 +204,7 @@ export default function Products({ onExit }) {
                   className="relative"
                 >
                   <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
-                  <p className="text-gray-700 text-base leading-relaxed pl-4">
+                  <p className="text-gray-300 text-base leading-relaxed pl-4">
                     {slide.quote}
                   </p>
                 </motion.div>
@@ -224,17 +221,17 @@ export default function Products({ onExit }) {
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7, delay: 0.5 }}
-                    className="w-2/5 h-full flex flex-col bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+                    className="w-2/5 h-full flex flex-col bg-black/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-700 overflow-hidden"
                   >
                     <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent h-full pr-2">
                       <motion.div 
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="flex items-center mb-4 sticky top-0 bg-white/90 backdrop-blur-sm py-2 z-10"
+                        className="flex items-center mb-4 sticky top-0 bg-black/60 backdrop-blur-sm py-2 z-10"
                       >
                         <span className="text-5xl mr-4">{slide.icon}</span>
-                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">{slide.name}</h2>
+                        <h2 className="text-3xl font-bold text-white">{slide.name}</h2>
                       </motion.div>
                       <motion.div
                         initial={{ y: 20, opacity: 0 }}
@@ -251,7 +248,7 @@ export default function Products({ onExit }) {
                         className="relative"
                       >
                         <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
-                        <p className="text-gray-700 text-lg leading-relaxed pl-4">
+                        <p className="text-gray-300 text-lg leading-relaxed pl-4">
                           {slide.quote}
                         </p>
                       </motion.div>
@@ -264,17 +261,17 @@ export default function Products({ onExit }) {
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7, delay: 0.5 }}
-                    className="w-2/5 h-full flex flex-col bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+                    className="w-2/5 h-full flex flex-col bg-black/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-gray-700 overflow-hidden"
                   >
                     <div className="overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent h-full pr-2">
                       <motion.div 
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="flex items-center mb-4 sticky top-0 bg-white/90 backdrop-blur-sm py-2 z-10"
+                        className="flex items-center mb-4 sticky top-0 bg-black/60 backdrop-blur-sm py-2 z-10"
                       >
                         <span className="text-5xl mr-4">{slide.icon}</span>
-                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">{slide.name}</h2>
+                        <h2 className="text-3xl font-bold text-white">{slide.name}</h2>
                       </motion.div>
                       <motion.div
                         initial={{ y: 20, opacity: 0 }}
@@ -291,7 +288,7 @@ export default function Products({ onExit }) {
                         className="relative"
                       >
                         <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
-                        <p className="text-gray-700 text-lg leading-relaxed pl-4">
+                        <p className="text-gray-300 text-lg leading-relaxed pl-4">
                           {slide.quote}
                         </p>
                       </motion.div>
